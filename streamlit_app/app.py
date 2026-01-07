@@ -6,15 +6,10 @@ Streamlit dashboard for Breast Cancer Detection
 import streamlit as st
 import pandas as pd
 import numpy as np
-from pathlib import Path
-import sys
 
-# Add src to path
-sys.path.append(str(Path(__file__).parent / 'src'))
-
-from data_processing.data_loader import load_data_as_dataframe
+from src.data_processing.data_loader import load_data_as_dataframe
 from src.models.train import train_and_return_model
-from evaluation.metrics import evaluate_model
+from src.evaluation.metrics import evaluate_model
 
 # --------------------------------------------------
 # Page configuration
