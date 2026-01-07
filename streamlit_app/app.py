@@ -82,7 +82,13 @@ elif page == "Model Prediction":
     scaler_path = models_dir / 'scaler.pkl'
     
     if model_path.exists() and scaler_path.exists():
-        model = joblib.load(model_path)
+        @st.cache_resource
+    def train_model():
+    from src.models.train import train_and_save_model
+    return train_and_save_model()
+
+    model = train_model()
+
         scaler = joblib.load(scaler_path)
         
         if st.button("Predict"):
